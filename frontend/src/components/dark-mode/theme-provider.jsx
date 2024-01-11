@@ -31,6 +31,7 @@ export function ThemeProvider({
                 : "light";
 
             root.classList.add(systemTheme);
+            setTheme(systemTheme);
             return;
         }
 
@@ -39,9 +40,10 @@ export function ThemeProvider({
 
     const value = {
         theme,
-        setTheme: (theme) => {
-            localStorage.setItem(storageKey, theme);
-            setTheme(theme);
+        setTheme: () => {
+            const newTheme = theme === "dark" ? "light" : "dark";
+            localStorage.setItem(storageKey, newTheme);
+            setTheme(newTheme);
         },
     };
 

@@ -66,8 +66,9 @@ function FormLogin() {
             .catch(({ response }) => {
                 setError("email", {
                     type: "custom",
-                    message: response.data.errors.email,
+                    message: response.data.errors?.email,
                 });
+                console.log(response.data);
                 resetField("password");
             });
     };

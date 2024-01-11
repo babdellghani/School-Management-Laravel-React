@@ -2,7 +2,11 @@ import { Briefcase, Mail, Users } from "lucide-react";
 import { useUserContext } from "../context/UserContext.jsx";
 
 function Dashboard() {
-    const { user, authenticated } = useUserContext();
+    const { user, isLoading, authenticated } = useUserContext();
+
+    if (isLoading) {
+        return <></>;
+    }
 
     return (
         <div className="max-w-7xl mx-auto">

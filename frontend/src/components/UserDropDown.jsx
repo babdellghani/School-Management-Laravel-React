@@ -44,7 +44,7 @@ function UserDropDown() {
                                     </AvatarFallback>
                                 </Avatar>
                                 <span className="text-foreground capitalize">
-                                    {user.name}
+                                    {user.first_name} {user.last_name}
                                 </span>
                             </>
                         )}
@@ -53,9 +53,11 @@ function UserDropDown() {
                 <DropdownMenuContent className="w-56">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                        <Link to={STUDENT_DASHBOARD_PATH}>Dashboard</Link>
-                    </DropdownMenuItem>
+                    <Link to={STUDENT_DASHBOARD_PATH}>
+                        <DropdownMenuItem className="cursor-pointer">
+                            Dashboard
+                        </DropdownMenuItem>
+                    </Link>
                     <DropdownMenuGroup>
                         <DropdownMenuItem>Profile</DropdownMenuItem>
                         <DropdownMenuItem>Settings</DropdownMenuItem>

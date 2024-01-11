@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
+            $table->string('email', 60)->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('avatar')->nullable();
+            $table->dateTime('birth_date')->nullable();
+            $table->enum('gender', ['m', 'f'])->nullable();
+            $table->enum('blood_group', ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])->nullable();
+            $table->string('phone', 10)->unique()->nullable();
+            $table->string('address')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

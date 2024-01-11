@@ -11,8 +11,6 @@ import UserDropDown from "@/components/UserDropDown.jsx";
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
-
     const { user, setUser, setIsLoading, setAuthenticated, authenticated, logout } = useUserContext();
     const navigate = useNavigate();
 
@@ -30,7 +28,6 @@ function NavBar() {
         });
     }, []);
 
-    useEffect(() => setMounted(true), []);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -67,7 +64,7 @@ function NavBar() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        {mounted && <ModeToggle />}
+                        <ModeToggle />
 
                         {authenticated && (
                             <>
@@ -115,7 +112,7 @@ function NavBar() {
                             </Link>
                         ))}
                         <div className="flex flex-row-reverse items-center justify-between">
-                            {mounted && <ModeToggle className="mr-10" />}
+                            <ModeToggle className="mr-10" />
 
                             {authenticated && (
                                 <div className="flex items-center space-x-4 px-3 py-2">

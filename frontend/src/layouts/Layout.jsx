@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "@/components/guset/NvaBar";
+import NavBar from "@/components/pages/home/NavBar";
 
 function Layout() {
     return (

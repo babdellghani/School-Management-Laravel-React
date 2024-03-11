@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { createContext, useContext, useState } from "react";
-import StudentApi from "@/services/Api/Student/StudentApi";
+import AuthApi from "@/services/api/auth/AuthApi";
 
 export const UserStateContext = createContext({
     user: {},
@@ -17,15 +17,15 @@ function UserContext({ children }) {
     const [authenticated, _setAuthenticated] = useState(window.localStorage.getItem("authenticated"));
 
     const login = async (email, password) => {
-        await StudentApi.getCsrfToken();
-        return await StudentApi.login(email, password)
+        await AuthApi.getCsrfToken();
+        return await AuthApi.login(email, password)
     };
 
     const logout = async () => {
         setUser({});
         _setAuthenticated(false);
         window.localStorage.removeItem("authenticated");
-        await StudentApi.logout();
+        await AuthApi.logout();
     };
 
     const setAuthenticated = (value) => {

@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
 import { Bell, Menu } from "lucide-react";
-import UserDropDown from "@/components/UserDropDown";
-import { ModeToggle } from "@/components/dark-mode/mode-toggle";
+import UserDropDown from "@/components/pages/UserDropDown";
+import { ModeToggle } from "@/components/ui/dark-mode/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "@/context/UserContext";
 import { useEffect } from "react";
-import StudentApi from "@/services/Api/Student/StudentApi";
+import AuthApi from "@/services/api/auth/AuthApi";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTES } from "@/router";
 
-function Header({ toggleSidebar }) {
+function NavBar({ toggleSidebar }) {
     const {
         user,
         setUser,
@@ -24,7 +24,7 @@ function Header({ toggleSidebar }) {
 
     useEffect(() => {
         if (!authenticated) return;
-        StudentApi.getUser()
+        AuthApi.getUser()
             .then((res) => {
                 if (res.status === 200) {
                     setUser(res.data);
@@ -72,8 +72,8 @@ function Header({ toggleSidebar }) {
     );
 }
 
-Header.propTypes = {
+NavBar.propTypes = {
     toggleSidebar: PropTypes.func.isRequired,
 };
 
-export default Header;
+export default NavBar;

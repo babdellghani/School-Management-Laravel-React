@@ -2,8 +2,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useUserContext } from "@/context/UserContext";
 import { useEffect, useState } from "react";
 import { ROUTES } from "@/router";
-import SideBar from "@/components/user/SideBar";
-import Header from "@/components/user/Header";
+import SideBar from "@/components/pages/dashboard/SideBar";
+import NavBar from "@/components/pages/dashboard/NavBar";
 
 function Layout() {
     const navigate = useNavigate();
@@ -27,8 +27,8 @@ function Layout() {
                 toggleSidebar={toggleSidebar}
             />
             <div className="flex-1 flex flex-col overflow-hidden bg-gray-100 dark:bg-gray-900">
-                {/* Header */}
-                <Header toggleSidebar={toggleSidebar} />
+                {/* Navbar */}
+                <NavBar toggleSidebar={toggleSidebar} />
                 {/* Main content */}
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 dark:bg-gray-900 p-6">
                     <Outlet />

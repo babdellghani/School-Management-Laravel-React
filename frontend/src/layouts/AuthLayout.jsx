@@ -1,16 +1,16 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import NavBar from "@/components/guset/NvaBar";
+import NavBar from "@/components/pages/home/NavBar";
 import { useUserContext } from "@/context/UserContext";
 import { useEffect } from "react";
-import { STUDENT_DASHBOARD_PATH } from "@/router";
+import { DASHBOARD_PATH } from "@/router";
 
-function Layout() {
+function AuthLayout() {
     const navigate = useNavigate();
     const context = useUserContext();
 
     useEffect(() => {
         if (context.authenticated) {
-            navigate(STUDENT_DASHBOARD_PATH);
+            navigate(DASHBOARD_PATH);
         }
     }, [context.authenticated]);
 
@@ -27,4 +27,4 @@ function Layout() {
     );
 }
 
-export default Layout;
+export default AuthLayout;

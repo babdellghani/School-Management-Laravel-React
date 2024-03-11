@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/dark-mode/theme-provider";
+import { useTheme } from "@/components/ui/dark-mode/theme-provider";
 
 export function ModeToggle({ variant = "outline", size = "icon" }) {
     const { setTheme } = useTheme();

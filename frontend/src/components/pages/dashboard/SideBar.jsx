@@ -16,7 +16,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ROUTES, STUDENT_DASHBOARD_PATH } from "@/router";
+import { ROUTES, DASHBOARD_PATH } from "@/router";
 import { Link } from "react-router-dom";
 
 function SideBar({ isSidebarOpen, setSidebarOpen, toggleSidebar }) {
@@ -58,7 +58,7 @@ function SideBar({ isSidebarOpen, setSidebarOpen, toggleSidebar }) {
     };
 
     const navItems = [
-        { icon: Home, text: "Dashboard", path: STUDENT_DASHBOARD_PATH },
+        { icon: Home, text: "Dashboard", path: DASHBOARD_PATH },
         { icon: Users, text: "Users", path: ROUTES.USERS },
         { icon: Briefcase, text: "Projects" },
         { icon: Calendar, text: "Calendar" },

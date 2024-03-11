@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../layouts/Layout";
-import UserLayout from "../layouts/UserLayout";
-import GustLayout from "../layouts/GustLayout";
-import Users from "../pages/Users";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import Home from "../pages/Home";
-import NotFound from "../pages/NotFound";
-import Dashboard from "../pages/Dashboard";
+import Layout from "@/layouts/Layout";
+import UserLayout from "@/layouts/UserLayout";
+import AuthLayout from "@/layouts/AuthLayout";
+import Users from "@/pages/Users";
+import Register from "@/pages/auth/Register";
+import Login from "@/pages/auth/Login";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
+import Dashboard from "@/pages/Dashboard";
 
-export const STUDENT_DASHBOARD_PATH = "/dashboard";
+export const DASHBOARD_PATH = "/dashboard";
 
 export const ROUTES = {
     HOME: "/",
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
         ],
     },
     {
-        element: <GustLayout />,
+        element: <AuthLayout />,
         children: [
             {
                 path: ROUTES.REGISTER,
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
         element: <UserLayout />,
         children: [
             {
-                path: STUDENT_DASHBOARD_PATH,
+                path: DASHBOARD_PATH,
                 element: <Dashboard />,
             },
             {

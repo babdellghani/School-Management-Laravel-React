@@ -2,32 +2,40 @@ import { useState, useEffect } from "react";
 import { Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {Link, useNavigate} from "react-router-dom";
-import { ModeToggle } from "@/components/dark-mode/mode-toggle.jsx";
+import { Link, useNavigate } from "react-router-dom";
+import { ModeToggle } from "@/components/ui/dark-mode/mode-toggle.jsx";
 import { ROUTES } from "@/router/index.jsx";
 import { useUserContext } from "@/context/UserContext.jsx";
-import StudentApi from "@/services/Api/Student/StudentApi.js";
-import UserDropDown from "@/components/UserDropDown.jsx";
+import AuthApi from "@/services/api/auth/AuthApi.js";
+import UserDropDown from "@/components/pages/UserDropDown.jsx";
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { user, setUser, setIsLoading, setAuthenticated, authenticated, logout } = useUserContext();
+    const {
+        user,
+        setUser,
+        setIsLoading,
+        setAuthenticated,
+        authenticated,
+        logout,
+    } = useUserContext();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!authenticated) return;
-        StudentApi.getUser().then((res) => {
-            if (res.status === 200) {
-                setUser(res.data);
-                setAuthenticated(true);
-                setIsLoading(false);
-            }
-        }).catch(() => {
-            logout();
-            navigate(ROUTES.LOGIN);
-        });
+        AuthApi.getUser()
+            .then((res) => {
+                if (res.status === 200) {
+                    setUser(res.data);
+                    setAuthenticated(true);
+                    setIsLoading(false);
+                }
+            })
+            .catch(() => {
+                logout();
+                navigate(ROUTES.LOGIN);
+            });
     }, []);
-
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 

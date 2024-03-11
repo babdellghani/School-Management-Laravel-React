@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Loader } from "lucide-react";
 import { useUserContext } from "@/context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { STUDENT_DASHBOARD_PATH } from "@/router";
+import { DASHBOARD_PATH } from "@/router";
 
 // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
 const passwordValidation = new RegExp(
@@ -60,7 +60,7 @@ function FormLogin() {
             .then((res) => {
                 if (res.status === 204) {
                     setAuthenticated(true);
-                    navigate(STUDENT_DASHBOARD_PATH);
+                    navigate(DASHBOARD_PATH);
                 }
             })
             .catch(({ response }) => {

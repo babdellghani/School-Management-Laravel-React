@@ -8,6 +8,7 @@ export const UserStateContext = createContext({
     isLoading: true,
     authenticated: false,
     setAuthenticated: () => {},
+    setToken: () => {},
     login: () => {},
     logout: () => {},
 });
@@ -25,12 +26,17 @@ function UserContext({ children }) {
         setUser({});
         _setAuthenticated(false);
         window.localStorage.removeItem("authenticated");
+        window.localStorage.removeItem("token");
         await AuthApi.logout();
     };
 
     const setAuthenticated = (value) => {
         _setAuthenticated(value);
         window.localStorage.setItem("authenticated", value);
+    };
+
+    const setToken = (token) => {
+        window.localStorage.setItem("token", token);
     };
 
     return (
@@ -42,6 +48,7 @@ function UserContext({ children }) {
                 setIsLoading,
                 authenticated,
                 setAuthenticated,
+                setToken,
                 login,
                 logout,
             }}

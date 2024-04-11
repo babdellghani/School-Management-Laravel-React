@@ -39,7 +39,7 @@ const formSchema = z.object({
 });
 
 function FormLogin() {
-    const { login, setAuthenticated } = useUserContext();
+    const { login, setAuthenticated, setToken } = useUserContext();
     const navigate = useNavigate();
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -59,8 +59,9 @@ function FormLogin() {
         await login(values.email, values.password)
             .then((res) => {
                 if (res.status === 200) {
-                    setAuthenticated(true);
                     console.log(res.data);
+                    setToken(res.data.token);
+                    setAuthenticated(true);
                     navigate(DASHBOARD_PATH);
                 }
             })

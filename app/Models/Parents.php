@@ -13,6 +13,19 @@ class Parents extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'avatar',
+        'birth_date',
+        'gender',
+        'blood_group',
+        'phone',
+        'address',
+        'password',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *

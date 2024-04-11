@@ -58,8 +58,9 @@ function FormLogin() {
     const onSubmit = async (values) => {
         await login(values.email, values.password)
             .then((res) => {
-                if (res.status === 204) {
+                if (res.status === 200) {
                     setAuthenticated(true);
+                    console.log(res.data);
                     navigate(DASHBOARD_PATH);
                 }
             })

@@ -12,10 +12,10 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { STUDENT_DASHBOARD_PATH } from "../../router/index.jsx";
-import { useUserContext } from "../../context/UserContext.jsx";
+import { STUDENT_DASHBOARD_PATH } from "@/router/index.jsx";
+import { useUserContext } from "@/context/UserContext.jsx";
 
-function NavBarDropDown() {
+function UserDropDown() {
     const { user, isLoading, logout } = useUserContext();
     return (
         <>
@@ -73,4 +73,4 @@ function NavBarDropDown() {
     );
 }
 
-export default NavBarDropDown;
+export default UserDropDown;

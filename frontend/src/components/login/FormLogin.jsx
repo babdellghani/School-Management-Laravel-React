@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Loader } from "lucide-react";
-import { useUserContext } from "../../context/UserContext";
+import { useUserContext } from "@/context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { STUDENT_DASHBOARD_PATH } from "../../router";
+import { STUDENT_DASHBOARD_PATH } from "@/router";
 
 // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
 const passwordValidation = new RegExp(

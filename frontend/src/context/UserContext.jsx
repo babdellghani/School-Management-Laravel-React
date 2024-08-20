@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { createContext, useContext, useState } from "react";
-import StudentApi from "../services/Api/Student/StudentApi";
+import StudentApi from "@/services/Api/Student/StudentApi";
 
 export const UserStateContext = createContext({
     user: {},

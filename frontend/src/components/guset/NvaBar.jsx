@@ -3,11 +3,11 @@ import { Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {Link, useNavigate} from "react-router-dom";
-import { ModeToggle } from "../../dark-mode/mode-toggle.jsx";
-import { ROUTES } from "../../../router/index.jsx";
-import { useUserContext } from "../../../context/UserContext.jsx";
-import StudentApi from "../../../services/Api/Student/StudentApi.js";
-import NavBarDropDown from "./NavBarDropDown.jsx";
+import { ModeToggle } from "@/components/dark-mode/mode-toggle.jsx";
+import { ROUTES } from "@/router/index.jsx";
+import { useUserContext } from "@/context/UserContext.jsx";
+import StudentApi from "@/services/Api/Student/StudentApi.js";
+import UserDropDown from "@/components/UserDropDown.jsx";
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,7 +71,7 @@ function NavBar() {
 
                         {authenticated && (
                             <>
-                                <NavBarDropDown />
+                                <UserDropDown />
                             </>
                         )}
 

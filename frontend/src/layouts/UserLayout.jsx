@@ -1,8 +1,9 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import NavBar from "../components/header/nvabar/NvaBar.jsx";
-import { useUserContext } from "../context/UserContext";
-import { useEffect } from "react";
-import { ROUTES } from "../router";
+import { useUserContext } from "@/context/UserContext";
+import { useEffect, useState } from "react";
+import { ROUTES } from "@/router";
+import SideBar from "@/components/user/SideBar";
+import Header from "@/components/user/Header";
 
 function Layout() {
     const navigate = useNavigate();
@@ -13,16 +14,27 @@ function Layout() {
             navigate(ROUTES.LOGIN);
         }
     }, [context.authenticated]);
+
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
+
     return (
-        <>
-            <header>
-                <NavBar />
-            </header>
-            <main className="container mx-auto my-5 min-h-screen">
-                <Outlet />
-            </main>
-            <footer>Footer</footer>
-        </>
+        <div className={`flex h-screen`}>
+            {/* Sidebar */}
+            <SideBar
+                isSidebarOpen={isSidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+                toggleSidebar={toggleSidebar}
+            />
+            <div className="flex-1 flex flex-col overflow-hidden bg-gray-100 dark:bg-gray-900">
+                {/* Header */}
+                <Header toggleSidebar={toggleSidebar} />
+                {/* Main content */}
+                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 dark:bg-gray-900 p-6">
+                    <Outlet />
+                </main>
+            </div>
+        </div>
     );
 }
 
